@@ -10,11 +10,11 @@ namespace FriendlyFoodFinder.GeoCoder.BingMaps
     public class BingMapsGeoCoderService : IGeoCodeAddresses
     {
         private readonly BingMapsApiGeoCoderResultConverter _converter;
-        private HttpClient _client;
-        private string _uriTemplate;
-        private string _addressUriTemplateSlug;
-        private string _apiKeyUriTemplateSlug;
-        private string _apiKey;
+        private readonly HttpClient _client;
+        private readonly string _uriTemplate;
+        private readonly string _addressUriTemplateSlug;
+        private readonly string _apiKeyUriTemplateSlug;
+        private readonly string _apiKey;
 
         public BingMapsGeoCoderService(BingMapsApiGeoCoderResultConverter converter)
         {
