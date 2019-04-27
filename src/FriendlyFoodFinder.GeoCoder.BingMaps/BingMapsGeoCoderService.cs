@@ -28,12 +28,19 @@ namespace FriendlyFoodFinder.GeoCoder.BingMaps
 
         public async Task<GeoLocation> GeoCodeAddress(string address)
         {
-            var uriString = _uriTemplate.Replace(_apiKeyUriTemplateSlug, _apiKey).Replace(_addressUriTemplateSlug, address);
-            var uri = new Uri(uriString);
+            try
+            {
+                var uriString = _uriTemplate.Replace(_apiKeyUriTemplateSlug, _apiKey).Replace(_addressUriTemplateSlug, address);
+                var uri = new Uri(uriString);
 
-            var apiResult = await _client.GetAsync(uri);
-            ValidateApiResult(apiResult);
-            return await ConvertApiResultToGeoLocation(apiResult);
+                var apiResult = await _client.GetAsync(uri);
+                ValidateApiResult(apiResult);
+                return await ConvertApiResultToGeoLocation(apiResult);
+            }
+            catch (Exception ex)
+            {
+                throw new UnableToGeoCodeAddress(ex);
+            }
         }
 
         private void ValidateApiResult(HttpResponseMessage apiResult)

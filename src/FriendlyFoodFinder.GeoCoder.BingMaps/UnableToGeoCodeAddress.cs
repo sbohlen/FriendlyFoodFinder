@@ -9,5 +9,10 @@ namespace FriendlyFoodFinder.GeoCoder.BingMaps
         {
             throw new NotImplementedException();
         }
+
+        public UnableToGeoCodeAddress(Exception innerException) : base(innerException.ToString())
+        {
+
+        }
     }
 }
