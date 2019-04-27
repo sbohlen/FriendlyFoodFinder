@@ -3,8 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendlyFoodFinder.Core", "src\FriendlyFoodFinder.Core\FriendlyFoodFinder.Core.csproj", "{4E64BB61-CF5F-4346-90A7-45894C22BC39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendlyFoodFinder.Core.Test", "test\FriendlyFoodFinder.Core.Test\FriendlyFoodFinder.Core.Test.csproj", "{02526AB6-D1C4-4E2D-9FAD-976FDC87DB01}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E64BB61-CF5F-4346-90A7-45894C22BC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E64BB61-CF5F-4346-90A7-45894C22BC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E64BB61-CF5F-4346-90A7-45894C22BC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E64BB61-CF5F-4346-90A7-45894C22BC39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02526AB6-D1C4-4E2D-9FAD-976FDC87DB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02526AB6-D1C4-4E2D-9FAD-976FDC87DB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02526AB6-D1C4-4E2D-9FAD-976FDC87DB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02526AB6-D1C4-4E2D-9FAD-976FDC87DB01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D950BEB-0BB8-437E-AB61-0801AD51B86D}
 	EndGlobalSection
 EndGlobal
