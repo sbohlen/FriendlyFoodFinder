@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FriendlyFoodFinder.Core.Exception;
+using FriendlyFoodFinder.Core.Specification;
 using FriendlyFoodFinder.GeoCoder.BingMaps;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
@@ -39,6 +40,7 @@ namespace FriendlyFoodFinder.Core.Test
         [Category(UnitTestType.Integration)]
         public async Task CanGeocodeValidAddress()
         {
+            Assume.That(new ValidAddressString().IsSatisfiedBy(VALID_TEST_ADDRESS_STRING), Is.True);
             var geoLocation = await _geoCoder.GeoCode(VALID_TEST_ADDRESS_STRING);
             Assert.That(geoLocation, Is.EqualTo(_expectedGeoLocation), $"Did not receive expected GeoLocation result.  Expected {_expectedGeoLocation} but received {geoLocation}.");
         }
@@ -46,6 +48,7 @@ namespace FriendlyFoodFinder.Core.Test
         [Test]
         public void CanRejectInvalidAddress()
         {
+            Assume.That(new ValidAddressString().IsSatisfiedBy(INVALID_TEST_ADDRESS_STRING), Is.False);
             Assert.ThrowsAsync<InvalidAddress>(() => _geoCoder.GeoCode(INVALID_TEST_ADDRESS_STRING));
         }
     }

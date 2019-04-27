@@ -13,6 +13,8 @@ namespace FriendlyFoodFinder.GeoCoder.BingMaps
             var content = await apiResult.Content.ReadAsStringAsync();
             var resultData = BingMapsGeoCoderResponseData.FromJson(content);
 
+            //TODO: get smarter about how we select the specific result set/coords. if multiple results are returned
+            //(e.g., sort by confidence first)
             var coordinates = resultData.ResourceSets[0].Resources[0].GeocodePoints[0].Coordinates;
 
             var lat = coordinates[0];
