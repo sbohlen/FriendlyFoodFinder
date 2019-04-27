@@ -33,20 +33,22 @@ namespace FriendlyFoodFinder.GeoCoder.BingMaps
 
             var apiResult = await _client.GetAsync(uri);
             ValidateApiResult(apiResult);
-            return ConvertApiResultToGeoLocation(apiResult);
+            return await ConvertApiResultToGeoLocation(apiResult);
         }
 
         private void ValidateApiResult(HttpResponseMessage apiResult)
         {
+            //TODO: explore the _other_ ways that the BING MAPS API can return a 200 but still potentially not contain a valid geocoded location
+            // (e.g., address-not-exist)
             if (apiResult.StatusCode != HttpStatusCode.OK)
             {
                 throw new UnableToGeoCodeAddress(apiResult);
             }
         }
 
-        private GeoLocation ConvertApiResultToGeoLocation(HttpResponseMessage apiResult)
+        private async Task<GeoLocation> ConvertApiResultToGeoLocation(HttpResponseMessage apiResult)
         {
-            return _converter.Convert(apiResult);
+            return await _converter.Convert(apiResult);
         }
     }
 }
