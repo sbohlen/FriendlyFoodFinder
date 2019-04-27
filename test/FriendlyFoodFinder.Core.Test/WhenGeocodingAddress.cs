@@ -1,44 +1,52 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using FriendlyFoodFinder.Core.Exception;
+using FriendlyFoodFinder.GeoCoder.BingMaps;
+using NUnit.Framework;
 using NUnit.Framework.Constraints;
+using Proteus.Utility.Configuration;
+using Proteus.Utility.UnitTest;
 
 namespace FriendlyFoodFinder.Core.Test
 {
     [TestFixture]
-    public class WhenGeocodingAddress
+    public class WhenGeoCodingAddress
     {
-        private const string TEST_ADDRESS_STRING = "11 Times Square, New York, New York";
-        private GeoLocation expectedGeoLocation;
+        private const string VALID_TEST_ADDRESS_STRING = "11 Times Square, New York, New York";
+        private const string INVALID_TEST_ADDRESS_STRING = "     ";
+        private const double EXPECTED_LAT = 40.75676;
+        private const double EXPECTED_LON = -73.98984;
+
+        private GeoLocation _expectedGeoLocation;
+        private BingMapsGeoCoderService _geoCoderService;
+        private GeoLocationCoder _geoCoder;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            ExtensibleSourceConfigurationManager.AppSettingReaders.Add(LocalSettingsJsonReader.GetAppSetting);
+            ExtensibleSourceConfigurationManager.AppSettingReaders.Add(EnvironmentVariableReader.GetAppSetting);
+        }
 
         [SetUp]
         public void SetUp()
         {
-            expectedGeoLocation = new GeoLocation(1d,2d);
+            _expectedGeoLocation = new GeoLocation(EXPECTED_LAT, EXPECTED_LON);
+            _geoCoderService = new BingMapsGeoCoderService(new BingMapsApiGeoCoderResultConverter());
+            _geoCoder = new GeoLocationCoder(_geoCoderService);
         }
- 
 
         [Test]
-        public void CanGeocodeValidAddress()
+        [Category(UnitTestType.Integration)]
+        public async Task CanGeocodeValidAddress()
         {
-            var geoCoder = new GeoLocationCoder();
-            var geoLocation = geoCoder.GeoCode(TEST_ADDRESS_STRING);
-
-            Assert.That(geoLocation, Is.EqualTo(expectedGeoLocation));
+            var geoLocation = await _geoCoder.GeoCode(VALID_TEST_ADDRESS_STRING);
+            Assert.That(geoLocation, Is.EqualTo(_expectedGeoLocation), $"Did not receive expected GeoLocation result.  Expected {_expectedGeoLocation} but received {geoLocation}.");
         }
-    }
 
-    public class GeoLocationCoder
-    {
-        public GeoLocation GeoCode(string address)
+        [Test]
+        public void CanRejectInvalidAddress()
         {
-            throw new System.NotImplementedException();
-        }
-    }
-
-    public class GeoLocation
-    {
-        public GeoLocation(double longitude, double latitude)
-        {
-            throw new System.NotImplementedException();
+            Assert.ThrowsAsync<InvalidAddress>(() => _geoCoder.GeoCode(INVALID_TEST_ADDRESS_STRING));
         }
     }
 }

@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proteus.Domain.Foundation</name>
+    </assembly>
+    <members>
+        <member name="T:Proteus.Domain.Foundation.GuidIdentityPersistenceBase`2">
+            <summary>
+            Base Class for Persistent Entities using GUID as the data type for their identity field.
+            </summary>
+            <typeparam name="TObject"></typeparam>
+            <typeparam name="TUpdater"></typeparam>
+        </member>
+        <member name="T:Proteus.Domain.Foundation.IdentityPersistenceBase`3">
+            <summary>
+            Abstract Base Class for Persistent Entities
+            </summary>
+            <typeparam name="TObject">The type of the object.</typeparam>
+            <typeparam name="TIdentity">The type of the identity value.</typeparam>
+            <typeparam name="TUpdater">The type of the logical 'user' data indicating last-updated-by</typeparam>
+        </member>
+        <member name="F:Proteus.Domain.Foundation.IdentityPersistenceBase`3._lastUpdatedBy">
+            <summary>
+            Last-updated-by value for the Entity
+            </summary>
+        </member>
+        <member name="F:Proteus.Domain.Foundation.IdentityPersistenceBase`3._lastUpdatedDateTime">
+            <summary>
+            Last-updated-date-time for the Entity
+            </summary>
+        </member>
+        <member name="F:Proteus.Domain.Foundation.IdentityPersistenceBase`3._persistenceId">
+            <summary>
+            Identity Persistence value for the Entity
+            </summary>
+        </member>
+        <member name="F:Proteus.Domain.Foundation.IdentityPersistenceBase`3._persistenceVersion">
+            <summary>
+            Persistence Version for the Entity
+            </summary>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.IdentityPersistenceBase`3.op_Equality(Proteus.Domain.Foundation.IdentityPersistenceBase{`0,`1,`2},Proteus.Domain.Foundation.IdentityPersistenceBase{`0,`1,`2})">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.IdentityPersistenceBase`3.op_Inequality(Proteus.Domain.Foundation.IdentityPersistenceBase{`0,`1,`2},Proteus.Domain.Foundation.IdentityPersistenceBase{`0,`1,`2})">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="P:Proteus.Domain.Foundation.IdentityPersistenceBase`3.IsTransient">
+            <summary>
+            Gets a value indicating whether this instance is transient.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is transient; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Proteus.Domain.Foundation.IdentityPersistenceBase`3.LastUpdatedBy">
+            <summary>
+            Gets the last updated by.
+            </summary>
+            <value>The last updated by.</value>
+        </member>
+        <member name="P:Proteus.Domain.Foundation.IdentityPersistenceBase`3.LastUpdatedDateTime">
+            <summary>
+            Gets the last updated date time.
+            </summary>
+            <value>The last updated date time.</value>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.IdentityPersistenceBase`3.Equals(System.Object)">
+            <summary>
+            Equalses the specified other.
+            </summary>
+            <param name="other">The other.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.IdentityPersistenceBase`3.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="T:Proteus.Domain.Foundation.IPersistenceIdentityField">
+            <summary>
+            Marker Interface indicating the presence of a private Identity Field
+            </summary>
+        </member>
+        <member name="T:Proteus.Domain.Foundation.IPersistenceUpdateTrackable`1">
+            <summary>
+            Indicates publicly-accessible persistence update tracking properties are available
+            </summary>
+        </member>
+        <member name="P:Proteus.Domain.Foundation.IPersistenceUpdateTrackable`1.LastUpdatedDateTime">
+            <summary>
+            Gets the last updated date time.
+            </summary>
+            <value>The last updated date time.</value>
+        </member>
+        <member name="P:Proteus.Domain.Foundation.IPersistenceUpdateTrackable`1.LastUpdatedBy">
+            <summary>
+            Gets the last updated by.
+            </summary>
+            <value>The last updated by.</value>
+        </member>
+        <member name="T:Proteus.Domain.Foundation.IPersistenceVersionField">
+            <summary>
+            Marker Interface indicating presence of a private Versioning Field
+            </summary>
+        </member>
+        <member name="T:Proteus.Domain.Foundation.IPersistentObject`1">
+            <summary>
+            High-level persistent object interface, indicates support for the entire collection of persistence interfaces
+            </summary>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.IPersistentObject`1.Equals(System.Object)">
+            <summary>
+            Equalses the specified other.
+            </summary>
+            <param name="other">The other.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.IPersistentObject`1.GetHashCode">
+            <summary>
+            Gets the hash code.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Proteus.Domain.Foundation.IPersistentObject`1.IsTransient">
+            <summary>
+            Gets a value indicating whether this instance is transient.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is transient; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.Specifications.IQueryableExtensions.Convert``2(System.Linq.IQueryable{``0},System.Converter{``0,``1})">
+            <summary>
+            Takes an IQueryable instance of type T and returns an IQueryable of type TResult.
+            The Func provided as the resultMap parameter is applied to each element in the original collection.
+            </summary>
+        </member>
+        <member name="T:Proteus.Domain.Foundation.ValueObjectBase`1">
+            <summary>
+            Abstract Base Class for Value Objects
+            Based on CodeCamp Server codebase http://code.google.com/p/codecampserver
+            </summary>
+            <typeparam name="TObject">The type of the object.</typeparam>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.ValueObjectBase`1.op_Equality(Proteus.Domain.Foundation.ValueObjectBase{`0},Proteus.Domain.Foundation.ValueObjectBase{`0})">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.ValueObjectBase`1.op_Inequality(Proteus.Domain.Foundation.ValueObjectBase{`0},Proteus.Domain.Foundation.ValueObjectBase{`0})">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.ValueObjectBase`1.Equals(System.Object)">
+            <summary>
+            Equalses the specified candidate.
+            </summary>
+            <param name="candidate">The candidate.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="candidate"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.ValueObjectBase`1.Equals(`0)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.ValueObjectBase`1.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Proteus.Domain.Foundation.ValueObjectBase`1.GetFields">
+            <summary>
+            Gets the fields.
+            </summary>
+            <returns>FieldInfo collection</returns>
+        </member>
+    </members>
+</doc>

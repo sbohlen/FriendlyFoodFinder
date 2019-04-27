@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proteus.Utility.UnitTest</name>
+    </assembly>
+    <members>
+        <member name="T:Proteus.Utility.UnitTest.UnitTestBase">
+            <summary>
+            Standard base class for all unit test fixtures
+            </summary>
+        </member>
+        <member name="M:Proteus.Utility.UnitTest.UnitTestBase.GetInstanceFieldValue(System.Object,System.String)">
+            <summary>
+            Convenience method that uses reflection to return the value of a non-public field of a given object.
+            </summary>
+            <remarks>Useful in certain instances during testing to avoid the need to add protected properties, etc. to a class just to facilitate testing.</remarks>
+            <param name="obj">The instance of the object from which to retrieve the field value.</param>
+            <param name="fieldName">Name of the field on the object from which to retrieve the value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proteus.Utility.UnitTest.UnitTestBase.GetInstanceFieldValue``1(System.Object,System.String)">
+            <summary>
+            Gets the instance field value.
+            </summary>
+            <typeparam name="TResult">The type of the t result.</typeparam>
+            <param name="obj">The object.</param>
+            <param name="fieldName">Name of the field.</param>
+            <returns>TResult.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Proteus.Utility.UnitTest.UnitTestBase.SetInstanceFieldValue(System.Object,System.String,System.Object)">
+            <summary>
+            Convenience method that uses reflection to set the value of a non-public field of a given object.
+            </summary>
+            <remarks>Useful in certain instances during testing to avoid the need to add protected properties, etc. to a class just to facilitate testing.</remarks>
+            <param name="obj">The instance of the object from which to set the field value.</param>
+            <param name="fieldName">Name of the field on the object to which to set the value.</param>
+            <param name="fieldValue">The field value to set.</param>
+        </member>
+        <member name="T:Proteus.Utility.UnitTest.UnitTestType">
+            <summary>
+            Static String values for [Category(...)] attribute to ensure consistency across all TestFixtures
+            </summary>
+        </member>
+        <member name="F:Proteus.Utility.UnitTest.UnitTestType.DatabaseDependent">
+            <summary>
+            All unit tests with dependencies on interacting with a database
+            </summary>
+        </member>
+        <member name="F:Proteus.Utility.UnitTest.UnitTestType.ExternalApplicationDependent">
+            <summary>
+            All unit tests with dependencies on other external applications (e.g. thru COM automation, etc.)
+            </summary>
+        </member>
+        <member name="F:Proteus.Utility.UnitTest.UnitTestType.Integration">
+            <summary>
+            All unit tests that interact with any other external dependency
+            </summary>
+        </member>
+        <member name="F:Proteus.Utility.UnitTest.UnitTestType.Unit">
+            <summary>
+            All 'pure' unit tests that do not have any external dependencies (intended to be the most common value used)
+            </summary>
+        </member>
+        <member name="F:Proteus.Utility.UnitTest.UnitTestType.UserInterface">
+            <summary>
+            All unit tests that exercise the user-interface aspects of the code (e.g., WatiN, etc.)
+            </summary>
+        </member>
+        <member name="F:Proteus.Utility.UnitTest.UnitTestType.LongRunning">
+            <summary>
+            All long running unit tests, regardless of dependency graph
+            </summary>
+        </member>
+    </members>
+</doc>
