@@ -67,7 +67,7 @@ namespace FriendlyFoodFinder.DataReader.Csv
 
         private void ValidateDataFilePath(string dataFilePath)
         {
-            if (!new CanAccessFile().IsSatisfiedBy(dataFilePath))
+            if (!new CanReachFile().IsSatisfiedBy(dataFilePath))
             {
                 throw new CannotReadCsvDataFile(dataFilePath);
             }

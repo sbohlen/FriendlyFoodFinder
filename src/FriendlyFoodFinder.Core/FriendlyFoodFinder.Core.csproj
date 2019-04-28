@@ -55,7 +55,7 @@
     <Compile Include="Exception\InvalidAddress.cs" />
     <Compile Include="IReadFoodTruckData.cs" />
     <Compile Include="PlanarGeoDistanceCalculator.cs" />
-    <Compile Include="Specification\CanAccessFile.cs" />
+    <Compile Include="Specification\CanReachFile.cs" />
     <Compile Include="Specification\NotNull.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specification\ValidAddressString.cs" />
