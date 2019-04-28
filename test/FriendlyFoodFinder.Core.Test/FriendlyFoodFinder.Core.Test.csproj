@@ -64,6 +64,7 @@
     <Compile Include="Specifications\WhenValidatingAddressString.cs" />
     <Compile Include="Specifications\WhenValidatingLatitudeValues.cs" />
     <Compile Include="Specifications\WhenValidatingLongitudeValues.cs" />
+    <Compile Include="WhenCalculatingGeoLocationDistance.cs" />
     <Compile Include="WhenCreatingGeoLocation.cs" />
     <Compile Include="WhenGeoCodingAddress.cs" />
     <Compile Include="WhenReadingCsvFile.cs" />
