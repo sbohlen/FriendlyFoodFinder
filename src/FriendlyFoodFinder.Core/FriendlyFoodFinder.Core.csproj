@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FoodTruck.cs" />
-    <Compile Include="QueryOriginToFoodTruckGeoDistanceCalculator.cs" />
+    <Compile Include="FoodTruckQuery.cs" />
+    <Compile Include="FoodTruckQueryParameters.cs" />
+    <Compile Include="IQueryForFoodTrucks.cs" />
+    <Compile Include="FoodTruckQueryOriginGeoDistanceCalculator.cs" />
     <Compile Include="GeoLocation.cs" />
     <Compile Include="GeoLocationCoder.cs" />
     <Compile Include="ICalculateGeoDistance.cs" />

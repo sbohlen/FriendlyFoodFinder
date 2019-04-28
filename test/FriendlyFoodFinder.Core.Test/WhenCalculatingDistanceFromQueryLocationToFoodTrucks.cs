@@ -34,8 +34,8 @@ namespace FriendlyFoodFinder.Core.Test
                 Assume.That(foodTruck.Lon, Is.Not.EqualTo(0),"Test assumes that no food truck will be located at the query location.");
             }
 
-            var calculator = new QueryOriginToFoodTruckGeoDistanceCalculator(new PlanarGeoDistanceCalculator());
-            await calculator.AddGeoDistanceFromQueryLocationToFoodTrucks(_queryLocation, _foodTrucks);
+            var calculator = new FoodTruckQueryOriginGeoDistanceCalculator(new PlanarGeoDistanceCalculator());
+            await calculator.AddGeoDistanceFromQueryOrigin(_queryLocation, _foodTrucks);
 
             foreach (var foodTruck in _foodTrucks)
             {

@@ -5,16 +5,16 @@ using FriendlyFoodFinder.Core.Specification;
 
 namespace FriendlyFoodFinder.Core
 {
-    public class QueryOriginToFoodTruckGeoDistanceCalculator
+    public class FoodTruckQueryOriginGeoDistanceCalculator
     {
         private readonly ICalculateGeoDistance _calculator;
 
-        public QueryOriginToFoodTruckGeoDistanceCalculator(ICalculateGeoDistance calculator)
+        public FoodTruckQueryOriginGeoDistanceCalculator(ICalculateGeoDistance calculator)
         {
             _calculator = calculator;
         }
 
-        public async Task AddGeoDistanceFromQueryLocationToFoodTrucks(GeoLocation queryOrigin, IEnumerable<FoodTruck> foodTrucks)
+        public async Task AddGeoDistanceFromQueryOrigin(GeoLocation queryOrigin, IEnumerable<FoodTruck> foodTrucks)
         {
             ValidateQueryOrigin(queryOrigin);
             ValidateFoodTrucks(foodTrucks);

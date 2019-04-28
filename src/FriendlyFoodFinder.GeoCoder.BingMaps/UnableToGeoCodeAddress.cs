@@ -7,7 +7,9 @@ namespace FriendlyFoodFinder.GeoCoder.BingMaps
     {
         public UnableToGeoCodeAddress(HttpResponseMessage apiResult)
         {
-            throw new NotImplementedException();
+            //TODO: store the apiResult and use to craft e.g., messages from the exception
+            //NIE removed here so that testing for this exception won't incorrectly throw NIE instead
+            //throw new NotImplementedException();  
         }
 
         public UnableToGeoCodeAddress(Exception innerException) : base(innerException.ToString())

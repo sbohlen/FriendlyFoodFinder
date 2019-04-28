@@ -1,6 +1,8 @@
-﻿namespace FriendlyFoodFinder.Core
+﻿using Proteus.Domain.Foundation;
+
+namespace FriendlyFoodFinder.Core
 {
-    public class FoodTruck
+    public class FoodTruck : ValueObjectBase<FoodTruck>
     {
         public int Id { get; set; }
         public string Name { get; set; }
