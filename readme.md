@@ -1,6 +1,23 @@
 # Friendly Food Finder #
 Friendly Food Finder (colloquially FFF, or just _F3_ for convenience) is an implementation of the general coding exercise identified [here](https://github.com/timfpark/take-home-engineering-challenge).
 
+
+## How to Build ##
+Follow these steps to build (and run) the provided solution:
+
+1. Clone this repo locally.
+1. Load the `FriendlyFoodFinder.sln` solution into Visual Studio.
+1. You will observe that the `FriendlyFoodFinder.Core.Test` project will **not** build/compile due to a missing `local.settings.json` file. To (among other things) avoid committing private secrets to the repo, this solution makes liberal use of [the Proteus.Utility.Configuration library](https://github.com/ProteusProject/Proteus.Utility/tree/master/src/Proteus.Utility.Configuration).  In order to build/run the solution, you must provide your own copy of this missing `local.settings.json` file into the `FriendlyFoodFinder.Core.Test` in the `test\FriendlyFoodFinder.Core.Test\local.settings.json` location.  This file must contain your _own_ Bing Maps API Key in the following format:
+
+```javascript
+{
+  "bingMapsApiKey" : "your-api-key-here"
+}
+```
+4. Follow [these steps](https://www.bingmapsportal.com/) to secure your own Bing Maps API key.  Add the API key to your own `local.settings.json` file in the path identified above.
+1. Build the solution and run all of the unit tests in the `FriendlyFoodFinder.Core.Test` project.  If you have configured your Bing Maps API key correctly, all test should now **PASS**.
+1. For insight into how to use/consume/interact with the provided solution in your own code/project, refer to the `CompleteEndToEndUseCase.TestHarness` unit test in this project.
+
 ## Design Principles ##
 The fundamental principles/objectives driving the design decisions made in this implementation include the following:
 
