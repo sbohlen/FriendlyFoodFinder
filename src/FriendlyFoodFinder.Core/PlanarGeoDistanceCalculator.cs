@@ -14,7 +14,7 @@ namespace FriendlyFoodFinder.Core
             var latitudinalDistance = start.Lat - end.Lat;
             var longitudinalDistance = start.Lon - end.Lon;
 
-            //since assuming planar distance is sufficient for our needs, Pythagoras (a^2 + b^2 = c^2) is sufficient for now 
+            //since assuming planar distance is sufficient for our needs, Pythagoras (a^2 + b^2 = c^2) is satisfactory for now 
             var distance = Math.Abs(Math.Sqrt(Math.Pow(latitudinalDistance, 2) + Math.Pow(longitudinalDistance, 2)));
 
             return Task.FromResult(distance);

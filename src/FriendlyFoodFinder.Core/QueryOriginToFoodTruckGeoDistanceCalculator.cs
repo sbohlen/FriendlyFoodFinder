@@ -5,24 +5,24 @@ using FriendlyFoodFinder.Core.Specification;
 
 namespace FriendlyFoodFinder.Core
 {
-    public class QueryLocationToFoodTruckGeoDistanceCalculator
+    public class QueryOriginToFoodTruckGeoDistanceCalculator
     {
         private readonly ICalculateGeoDistance _calculator;
 
-        public QueryLocationToFoodTruckGeoDistanceCalculator(ICalculateGeoDistance calculator)
+        public QueryOriginToFoodTruckGeoDistanceCalculator(ICalculateGeoDistance calculator)
         {
             _calculator = calculator;
         }
 
-        public async Task AddGeoDistanceFromQueryLocationToFoodTrucks(GeoLocation queryLocation, IEnumerable<FoodTruck> foodTrucks)
+        public async Task AddGeoDistanceFromQueryLocationToFoodTrucks(GeoLocation queryOrigin, IEnumerable<FoodTruck> foodTrucks)
         {
-            ValidateQueryLocation(queryLocation);
+            ValidateQueryOrigin(queryOrigin);
             ValidateFoodTrucks(foodTrucks);
 
             foreach (var foodTruck in foodTrucks)
             {
                 var truckLocation = new GeoLocation(foodTruck.Lat, foodTruck.Lon);
-                foodTruck.GeoDistanceFromQueryLocation = await _calculator.CalculateGeoDistanceBetween(queryLocation, truckLocation);
+                foodTruck.GeoDistanceFromQueryOrigin = await _calculator.CalculateGeoDistanceBetween(queryOrigin, truckLocation);
             }
         }
 
@@ -34,11 +34,11 @@ namespace FriendlyFoodFinder.Core
             }
         }
 
-        private void ValidateQueryLocation(GeoLocation queryLocation)
+        private void ValidateQueryOrigin(GeoLocation queryOrigin)
         {
-            if (!new NotNull().IsSatisfiedBy(queryLocation))
+            if (!new NotNull().IsSatisfiedBy(queryOrigin))
             {
-                throw new ArgumentException("Argument cannot be NULL.", nameof(queryLocation));
+                throw new ArgumentException("Argument cannot be NULL.", nameof(queryOrigin));
             }
         }
     }

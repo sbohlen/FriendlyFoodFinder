@@ -34,12 +34,12 @@ namespace FriendlyFoodFinder.Core.Test
                 Assume.That(foodTruck.Lon, Is.Not.EqualTo(0),"Test assumes that no food truck will be located at the query location.");
             }
 
-            var calculator = new QueryLocationToFoodTruckGeoDistanceCalculator(new PlanarGeoDistanceCalculator());
+            var calculator = new QueryOriginToFoodTruckGeoDistanceCalculator(new PlanarGeoDistanceCalculator());
             await calculator.AddGeoDistanceFromQueryLocationToFoodTrucks(_queryLocation, _foodTrucks);
 
             foreach (var foodTruck in _foodTrucks)
             {
-                Assert.That(foodTruck.GeoDistanceFromQueryLocation, Is.GreaterThan(0));
+                Assert.That(foodTruck.GeoDistanceFromQueryOrigin, Is.GreaterThan(0));
             }
         }
     }
