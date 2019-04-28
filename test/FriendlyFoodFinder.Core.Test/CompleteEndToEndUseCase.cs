@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FriendlyFoodFinder.DataReader.Csv;
@@ -17,7 +18,7 @@ namespace FriendlyFoodFinder.Core.Test
         {
             //setup the config subsystem to consume the local (private) override for the bing maps APO key
             ExtensibleSourceConfigurationManager.AppSettingReaders.Add(LocalSettingsJsonReader.GetAppSetting);
-            
+
             //define the address for the origin location for the query (conceptually the user's location, but needn't necessarily be)
             var address = "11 Times Square, New York, NY";
 
@@ -26,7 +27,8 @@ namespace FriendlyFoodFinder.Core.Test
             var queryLocation = await geoCoder.GeoCode(address);
 
             //get the food trucks from the source data
-            var foodTrucks = await GetFoodTrucks();
+            var reader = new FoodTruckCsvDataReader(ExtensibleSourceConfigurationManager.AppSettings("csvDataFilePath"));
+            var foodTrucks = await reader.ReadData();
 
             //add the distance from the origin location to each food truck
             var truckToOriginDistanceCalculator = new FoodTruckQueryOriginGeoDistanceCalculator(new PlanarGeoDistanceCalculator());
@@ -38,17 +40,15 @@ namespace FriendlyFoodFinder.Core.Test
 
             //perform the query
             var query = new FoodTruckQuery();
-            var matches = await query.Find(foodTrucks, parameters);
+            var matchingFoodTrucks = await query.Find(foodTrucks, parameters);
 
-            Assert.That(matches.Count(), Is.EqualTo(5));
+            Assert.That(matchingFoodTrucks.Count(), Is.EqualTo(5));
 
-        }
-
-
-        private async Task<IEnumerable<FoodTruck>> GetFoodTrucks()
-        {
-            var reader = new FoodTruckCsvDataReader(@"foodTruckData.csv");
-            return await reader.ReadData();
+            //for convenience, ToString() can be used to pretty-print each result in a default human-consumable format
+            foreach (var foodTruck in matchingFoodTrucks)
+            {
+                Debug.WriteLine(foodTruck);
+            }
         }
     }
 }

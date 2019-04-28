@@ -21,5 +21,10 @@ namespace FriendlyFoodFinder.Core
             Truck,
             PushCart
         }
+
+        public override string ToString()
+        {
+            return $"Name: {Name} | Address: {Address} | Distance: {GeoDistanceFromQueryOrigin} | Food: {FoodItems} | Hours: {HoursOfOperation}";
+        }
     }
 }
