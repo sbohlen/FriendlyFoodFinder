@@ -66,11 +66,16 @@
     <Compile Include="Specifications\WhenValidatingLongitudeValues.cs" />
     <Compile Include="WhenCreatingGeoLocation.cs" />
     <Compile Include="WhenGeoCodingAddress.cs" />
+    <Compile Include="WhenReadingCsvFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\FriendlyFoodFinder.Core\FriendlyFoodFinder.Core.csproj">
       <Project>{4e64bb61-cf5f-4346-90a7-45894c22bc39}</Project>
       <Name>FriendlyFoodFinder.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\FriendlyFoodFinder.DataReader.Csv\FriendlyFoodFinder.DataReader.Csv.csproj">
+      <Project>{f1e88638-3093-4231-89dc-ff6ceb487522}</Project>
+      <Name>FriendlyFoodFinder.DataReader.Csv</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\FriendlyFoodFinder.GeoCoder.BingMaps\FriendlyFoodFinder.GeoCoder.BingMaps.csproj">
       <Project>{29c5a685-2cc8-481f-a18e-041802e23f8c}</Project>
@@ -79,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="foodTruckData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

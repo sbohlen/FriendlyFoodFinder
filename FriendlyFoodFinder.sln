@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendlyFoodFinder.Core.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendlyFoodFinder.GeoCoder.BingMaps", "src\FriendlyFoodFinder.GeoCoder.BingMaps\FriendlyFoodFinder.GeoCoder.BingMaps.csproj", "{29C5A685-2CC8-481F-A18E-041802E23F8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendlyFoodFinder.DataReader.Csv", "src\FriendlyFoodFinder.DataReader.Csv\FriendlyFoodFinder.DataReader.Csv.csproj", "{F1E88638-3093-4231-89DC-FF6CEB487522}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{29C5A685-2CC8-481F-A18E-041802E23F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29C5A685-2CC8-481F-A18E-041802E23F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29C5A685-2CC8-481F-A18E-041802E23F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E88638-3093-4231-89DC-FF6CEB487522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E88638-3093-4231-89DC-FF6CEB487522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E88638-3093-4231-89DC-FF6CEB487522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E88638-3093-4231-89DC-FF6CEB487522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

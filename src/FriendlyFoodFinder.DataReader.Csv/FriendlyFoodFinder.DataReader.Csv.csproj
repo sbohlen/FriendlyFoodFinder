@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4E64BB61-CF5F-4346-90A7-45894C22BC39}</ProjectGuid>
+    <ProjectGuid>{F1E88638-3093-4231-89DC-FF6CEB487522}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FriendlyFoodFinder.Core</RootNamespace>
-    <AssemblyName>FriendlyFoodFinder.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>FriendlyFoodFinder.DataReader.Csv</RootNamespace>
+    <AssemblyName>FriendlyFoodFinder.DataReader.Csv</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -31,11 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CsvHelper.12.1.2\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Proteus.Domain.Foundation">
       <HintPath>..\..\lib\Proteus.Domain.Foundation.dll</HintPath>
     </Reference>
+    <Reference Include="Proteus.Utility.Configuration, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Proteus.Utility.Configuration.1.1.0\lib\net46\Proteus.Utility.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,21 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FoodTruck.cs" />
-    <Compile Include="GeoLocation.cs" />
-    <Compile Include="GeoLocationCoder.cs" />
-    <Compile Include="IGeoCodeAddresses.cs" />
-    <Compile Include="Exception\InvalidLatitudeValue.cs" />
-    <Compile Include="Exception\InvalidLongitudeValue.cs" />
-    <Compile Include="Exception\InvalidAddress.cs" />
-    <Compile Include="IReadFoodTruckData.cs" />
-    <Compile Include="Specification\CanAccessFile.cs" />
-    <Compile Include="Specification\NotNull.cs" />
+    <Compile Include="CannotReadCsvDataFile.cs" />
+    <Compile Include="FoodTruckCsvData.cs" />
+    <Compile Include="FoodTruckCsvDataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Specification\ValidAddressString.cs" />
-    <Compile Include="Specification\ValidLatitude.cs" />
-    <Compile Include="Specification\ValidLongitude.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FriendlyFoodFinder.Core\FriendlyFoodFinder.Core.csproj">
+      <Project>{4e64bb61-cf5f-4346-90a7-45894c22bc39}</Project>
+      <Name>FriendlyFoodFinder.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
