@@ -12,11 +12,17 @@ namespace FriendlyFoodFinder.DataReader.Csv
     {
         private const string TruckFacilityTypeValue = "TRUCK";
         private const string TruckPermitApprovedStatusValue = "APPROVED";
+        private readonly string _csvDataFilePath;
 
-        public async Task<IEnumerable<FoodTruck>> ReadData(string csvDataFilePath)
+        public FoodTruckCsvDataReader(string csvDataFilePath)
         {
-            ValidateDataFilePath(csvDataFilePath);
-            var csvData = GetDataFromCsvFile(csvDataFilePath);
+            _csvDataFilePath = csvDataFilePath;
+        }
+
+        public async Task<IEnumerable<FoodTruck>> ReadData()
+        {
+            ValidateDataFilePath(_csvDataFilePath);
+            var csvData = GetDataFromCsvFile(_csvDataFilePath);
             var convertedData = ConvertNativeDataToResultFormat(csvData);
 
             return await Task.FromResult(convertedData);

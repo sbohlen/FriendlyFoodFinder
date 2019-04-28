@@ -15,8 +15,8 @@ namespace FriendlyFoodFinder.Core.Test
         [Category(UnitTestType.Integration)]
         public async Task CanReadDataFromValidFile()
         {
-            var reader = new FoodTruckCsvDataReader();
-            var data = await reader.ReadData(@"foodTruckData.csv");
+            var reader = new FoodTruckCsvDataReader(@"foodTruckData.csv");
+            var data = await reader.ReadData();
 
             Assert.That(data, Is.Not.Null);
             Assert.That(data.Count(), Is.GreaterThan(0));
@@ -26,11 +26,11 @@ namespace FriendlyFoodFinder.Core.Test
         public void CanPreventAccessToInvalidFile()
         {
             var fileDoesntExist = @"file-doesnt-exist.csv";
+            Assume.That(File.Exists(fileDoesntExist), Is.False, $"Test assumes that the file {fileDoesntExist} doesn't exist.");
 
-            var reader = new FoodTruckCsvDataReader();
+            var reader = new FoodTruckCsvDataReader(fileDoesntExist);
 
-            Assume.That(File.Exists(fileDoesntExist), Is.False);
-            Assert.ThrowsAsync<CannotReadCsvDataFile>(() => reader.ReadData(fileDoesntExist));
+            Assert.ThrowsAsync<CannotReadCsvDataFile>(() => reader.ReadData());
         }
     }
 }
