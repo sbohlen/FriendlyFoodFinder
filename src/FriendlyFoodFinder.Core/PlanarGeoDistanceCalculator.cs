@@ -4,7 +4,7 @@ using FriendlyFoodFinder.Core.Specification;
 
 namespace FriendlyFoodFinder.Core
 {
-    public class PlanarGeoLocationDistanceCalculator : ICalculateGeoLocationDistance
+    public class PlanarGeoDistanceCalculator : ICalculateGeoDistance
     {
         public Task<double> CalculateGeoDistanceBetween(GeoLocation start, GeoLocation end)
         {

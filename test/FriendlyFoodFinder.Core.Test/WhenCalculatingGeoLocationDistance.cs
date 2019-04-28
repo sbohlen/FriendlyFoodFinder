@@ -12,7 +12,7 @@ namespace FriendlyFoodFinder.Core.Test
         [TestCase(-10,-10,10,10,28.2,28.3)]
         public async Task CanCalculateDistanceBetweenValidGeoLocations(double startLat, double startLon, double endLat, double endLon, double minAssertRange, double maxAssertRange)
         {
-            var calculator = new PlanarGeoLocationDistanceCalculator();
+            var calculator = new PlanarGeoDistanceCalculator();
 
             var start = new GeoLocation(startLat, startLon);
             var end = new GeoLocation(endLat, endLon);
@@ -24,7 +24,7 @@ namespace FriendlyFoodFinder.Core.Test
         [Test]
         public void CanProtectAgainstInvalidGeoLocations()
         {
-            var calculator = new PlanarGeoLocationDistanceCalculator();
+            var calculator = new PlanarGeoDistanceCalculator();
             var geoLocation = new GeoLocation(0, 0);
 
             Assert.ThrowsAsync<ArgumentException>(() => calculator.CalculateGeoDistanceBetween(geoLocation, null));

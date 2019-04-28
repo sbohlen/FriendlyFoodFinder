@@ -45,15 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FoodTruck.cs" />
+    <Compile Include="QueryLocationToFoodTruckGeoDistanceCalculator.cs" />
     <Compile Include="GeoLocation.cs" />
     <Compile Include="GeoLocationCoder.cs" />
-    <Compile Include="ICalculateGeoLocationDistance.cs" />
+    <Compile Include="ICalculateGeoDistance.cs" />
     <Compile Include="IGeoCodeAddresses.cs" />
     <Compile Include="Exception\InvalidLatitudeValue.cs" />
     <Compile Include="Exception\InvalidLongitudeValue.cs" />
     <Compile Include="Exception\InvalidAddress.cs" />
     <Compile Include="IReadFoodTruckData.cs" />
-    <Compile Include="PlanarGeoLocationDistanceCalculator.cs" />
+    <Compile Include="PlanarGeoDistanceCalculator.cs" />
     <Compile Include="Specification\CanAccessFile.cs" />
     <Compile Include="Specification\NotNull.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

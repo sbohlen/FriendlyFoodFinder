@@ -11,6 +11,7 @@
         public double Lon { get; set; }
         public string HoursOfOperation { get; set; }
         public string FoodItems { get; set; }
+        public double GeoDistanceFromQueryLocation { get; set; }
 
 
         public enum FacilityType

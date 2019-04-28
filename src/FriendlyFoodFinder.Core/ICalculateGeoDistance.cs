@@ -2,7 +2,7 @@
 
 namespace FriendlyFoodFinder.Core
 {
-    public interface ICalculateGeoLocationDistance
+    public interface ICalculateGeoDistance
     {
         Task<double> CalculateGeoDistanceBetween(GeoLocation start, GeoLocation end);
     }

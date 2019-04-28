@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using FriendlyFoodFinder.DataReader.Csv;
 using NUnit.Framework;
@@ -24,9 +25,12 @@ namespace FriendlyFoodFinder.Core.Test
         [Test]
         public void CanPreventAccessToInvalidFile()
         {
+            var fileDoesntExist = @"file-doesnt-exist.csv";
+
             var reader = new FoodTruckCsvDataReader();
 
-            Assert.ThrowsAsync<CannotReadCsvDataFile>(() => reader.ReadData(@"file-doesnt-exist.csv"));
+            Assume.That(File.Exists(fileDoesntExist), Is.False);
+            Assert.ThrowsAsync<CannotReadCsvDataFile>(() => reader.ReadData(fileDoesntExist));
         }
     }
 }
