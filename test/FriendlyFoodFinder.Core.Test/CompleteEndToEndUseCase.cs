@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using FriendlyFoodFinder.DataReader.Csv;
 using FriendlyFoodFinder.GeoCoder.BingMaps;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Proteus.Utility.Configuration;
+using Proteus.Utility.UnitTest;
 
 namespace FriendlyFoodFinder.Core.Test
 {
@@ -14,6 +14,7 @@ namespace FriendlyFoodFinder.Core.Test
     public class CompleteEndToEndUseCase
     {
         [Test]
+        [Category(UnitTestType.Integration)]
         public async Task TestHarness()
         {
             //setup the config subsystem to consume the local (private) override for the bing maps APO key
@@ -22,13 +23,33 @@ namespace FriendlyFoodFinder.Core.Test
             //define the address for the origin location for the query (conceptually the user's location, but needn't necessarily be)
             var address = "11 Times Square, New York, NY";
 
-            //geocode the address
-            var geoCoder = new GeoLocationCoder(new BingMapsGeoCoderService(new BingMapsApiGeoCoderResultConverter()));
-            var queryLocation = await geoCoder.GeoCode(address);
+            //define vars to carry the results
+            GeoLocation queryLocation;
+            IEnumerable<FoodTruck> foodTrucks;
 
-            //get the food trucks from the source data
-            var reader = new FoodTruckCsvDataReader(ExtensibleSourceConfigurationManager.AppSettings("csvDataFilePath"));
-            var foodTrucks = await reader.ReadData();
+            try
+            {
+                //geocode the address
+                var geoCoder = new GeoLocationCoder(new BingMapsGeoCoderService(new BingMapsApiGeoCoderResultConverter()));
+                queryLocation = await geoCoder.GeoCode(address);
+            }
+            catch (UnableToGeoCodeAddress ex)
+            {
+                Debug.WriteLine(ex);
+                throw;
+            }
+
+            try
+            {
+                //get the food trucks from the source data
+                var reader = new FoodTruckCsvDataReader(ExtensibleSourceConfigurationManager.AppSettings("csvDataFilePath"));
+                foodTrucks = await reader.ReadData();
+            }
+            catch (CannotReadCsvDataFile ex)
+            {
+                Debug.WriteLine(ex);
+                throw;
+            }
 
             //add the distance from the origin location to each food truck
             var truckToOriginDistanceCalculator = new FoodTruckQueryOriginGeoDistanceCalculator(new PlanarGeoDistanceCalculator());
