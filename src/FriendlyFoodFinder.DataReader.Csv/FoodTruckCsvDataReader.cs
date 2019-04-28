@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using CsvHelper;
 using FriendlyFoodFinder.Core;
 using FriendlyFoodFinder.Core.Specification;
-using Proteus.Utility.Configuration;
 
 namespace FriendlyFoodFinder.DataReader.Csv
 {
